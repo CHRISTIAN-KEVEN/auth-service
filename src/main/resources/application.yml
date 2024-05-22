@@ -1,0 +1,38 @@
+
+server:
+  port: 10084
+
+spring:
+  application:
+    name: AUTHENTICATION-SERVICE
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/db_user_service
+    username: root
+    password:
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL57InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: 16381
+    password:
+    database: 4
+    timeout: 3000
+
+eureka:
+  instance:
+    preferred-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:18763}
+
